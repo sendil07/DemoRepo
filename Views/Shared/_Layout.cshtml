@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" 
+        type="text/css" />
+    <script src="~/Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        div.layout { background-color: lightgray;}
+        div.view { border: thin solid black; margin: 10px 0;}
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1><a href="/">ASP.NET MVC MUSIC STORE</a></h1>
+        <ul id="navlist">
+            <li class="first"><a href="@Url.Content("~")" id="current">Home</a></li>
+            <li><a href="@Url.Content("~/Store/")">Store</a></li>
+        </ul>        
+    </div>
+
+    @RenderSection("Header", false)
+
+    <div class="layout">
+        ******************************************** This is part of the layout ******************************************** 
+    </div>
+    @if (IsSectionDefined("body"))
+    {
+        @RenderSection("Body")
+    }
+    @RenderBody()
+
+    
+    <div class="layout">
+        ******************************************** This is part of the layout ******************************************** 
+    </div>
+    @if (IsSectionDefined("footer"))
+    {
+        @RenderSection("Footer")
+    }
+    else
+    {
+        <h4>This is the default footer</h4>
+    }
+    
+    
+</body>
+</html>

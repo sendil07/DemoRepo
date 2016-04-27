@@ -1,0 +1,27 @@
+﻿@model string[]
+@{
+    ViewBag.Title = "SectionSample";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SectionSample</h2>
+@section Header{
+    <div class="View">
+        @foreach(string str in Model)
+        {
+            @Html.ActionLink(str,str,null,new{style = "margin: 5px"})
+            
+            }
+    </div>
+}
+
+@section body{
+    This is body Section
+}
+
+@section Footer
+{
+    <div id="footer">
+        built with <a href="http://asp.net/mvc">ASP.NET MVC 3</a>
+    </div>
+}

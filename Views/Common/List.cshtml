@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = null;
+}
+
+<h2>This is view from View/Common folder location</h2>
+
+@Html.Partial("MyStrongPartialView", new[] { "Apple", "Orange", "Pear" })
+
+@Html.Action("Time", "MyView");

@@ -1,0 +1,108 @@
+﻿@model List<MusicStore.Models.Album>
+@{
+    ViewBag.Title = "ASP.NET MVC Music Store";
+}
+
+@section Header{
+<h3>Sample Practice links</h3>
+}
+
+<table cellpadding="0" cellspacing="0" border="1">
+    <thead>
+        <tr>
+            <th>
+                Helper
+            </th>
+            <th>
+                Output
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                Url.Content("~/Content/Site.css")
+            </td>
+            <td>@Url.Content("~/Content/Site.css")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Html.ActionLink("My Link", "Index", "People")
+            </td>
+            <td>@Html.ActionLink("My Link", "Index", "People") <br />
+            ActionLink will generate the URL to get to an action using the first matching route by action name. 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Url.Action("GetPeople", "People")
+            </td>
+            <td>@Url.Action("GetPeople", "People")<br />
+            will simply pick the first route that matches the criteria.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Url.RouteUrl(new {controller = "People", action="GetPeople"})
+            </td>
+            <td>@Url.RouteUrl(new { controller = "People", action = "GetPeople" })
+            <br />
+            allows you to specify a particular route by name. This will force the usage of that route. 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Url.RouteUrl("FormRoute", new {controller = "People", action="GetPeople"})
+            </td>
+            <td>@Url.RouteUrl("FormRoute", new { controller = "People", action = "GetPeople" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Html.RouteLink("My Link", new {controller = "People", action="GetPeople"})
+            </td>
+            <td>@Html.RouteLink("My Link", new
+           {
+               controller = "People",
+               action = "GetPeople"
+           })<br />
+           RouteLink will generate a URL to a specific route determined either by name or route values.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Html.RouteLink("My Link", "FormRoute", new {controller = "People", action="GetPeople"})
+            </td>
+            <td>@Html.RouteLink("My Link", "FormRoute", new
+           {
+               controller = "People",
+               action = "GetPeople"
+           })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Person View - This is an HTML element:
+            </td>
+            <td>@Html.RouteLink("Html SampleView", "FormRoute", new
+           {
+               controller = "People",
+               action = "CreatePerson"
+           })
+            </td>
+        </tr>
+        <tr> 
+            <td> View Engine Sample</td>
+            <td>@Html.ActionLink("MyView Engine", "Index", "MyView")</td>
+        </tr>
+        <tr> 
+            <td> Section Sample</td>
+            <td>@Html.ActionLink("MyView Section sample", "SectionSample", "MyView")</td>
+        </tr>
+        <tr>
+            <td> Custom Filter: </td>
+            <td>@Html.ActionLink("Custon Filter", "CustonFilterTest")</td>
+        </tr>
+    </tbody>
+</table>

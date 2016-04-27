@@ -1,0 +1,88 @@
+﻿@model MusicStore.Models.Person
+
+@{
+    ViewBag.Title = "CreatePerson";
+    Html.EnableClientValidation(false);
+}
+
+<style>
+    .dataElem { margin: 5px;}
+h2 > label {width: inherit;}
+.editor-label, .editor-field {float: left;}
+.editor-label, .editor-label label, .editor-field input {height: 20px;}
+.editor-label {clear: left;}
+.editor-field { margin-left: 10px; margin-top: 10px;}
+input[type=submit] { float: left; clear: both; margin-top: 10px;}
+.column { float: left; margin: 10px;}
+</style>
+<h2>CreatePerson</h2>
+
+@using (Html.BeginRouteForm("Formroute", new { }, FormMethod.Post, new { @class = "personClass", data_formType = "person" }))
+{
+    <div class="dataElem">
+    <label>PersonId</label>
+        @Html.Editor("PersonId")
+    </div>
+    <div class="dataElem">
+    <label>FirstName</label>
+        @Html.Editor("FirstName")
+    </div>
+
+    <div class="dataElem">
+    <label>LastName</label>
+        @Html.EditorFor(m => m.LastName)
+    </div>
+    <div class="dataElem">
+    <label>Role</label>
+        @Html.EditorFor(m => m.Role)
+       @* @Html.TextBoxFor(m => m.Role, new SelectList(Enum.GetNames(typeof(MusicStore.Models.Role))))*@
+    </div>
+    
+     <div class="dataElem">
+        <label>Date of Birth</label>
+        @Html.EditorFor(m => m.BirthDate)
+    </div>
+    
+    <table border="1" cellpadding="0" cellspacing="0">
+        <tr class="dataElem">
+            <td>@Html.Label("PersonId")</td>
+            <td>@Html.Display("PersonId")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("FirstName")</td>
+            <td>@Html.Display("FirstName")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("LastName")</td>
+            <td>@Html.Display("LastName")</td>
+        </tr>
+
+        <tr>
+            <td>@Html.Label("Role")</td>
+            <td>@Html.DisplayFor(m => m.Role)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.BirthDate)</td>
+            <td>@Html.DisplayFor(m => m.BirthDate)</td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit" />
+}
+
+<h3>Whole-Model Template helper -- scaffolding : @Html.LabelForModel()</h3>
+<table border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            @using (Html.BeginRouteForm("Formroute", new { }, FormMethod.Post, new { @class = "personClass", data_formType = "person" }))
+            {
+                @Html.EditorForModel()
+
+                <div class="column">
+                    @Html.EditorFor(m => m.HomeAddress)
+                 </div>
+                <input type="submit" value="Submit" />
+            }
+        </td>
+    </tr>
+
+</table>
