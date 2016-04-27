@@ -18,9 +18,6 @@ namespace MusicStore.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/LogOn
-
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
